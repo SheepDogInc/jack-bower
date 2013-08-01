@@ -29,7 +29,7 @@ class Command(AppDirectoryCommand):
                     json.dump(bower_package, bower_fp, indent=4,
                               separators=(',', ': '))
 
-            os.chdir(app_path)
-            if os.system('bower install') != 0:
+            install_command = 'bower install %s' % app_path
+            if os.system(install_command) != 0:
                 raise CommandError("Bower encountered an issue while "
                                    "installing.")
